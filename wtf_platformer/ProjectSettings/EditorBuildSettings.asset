@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/dark_scene.unity
+    guid: d3364fbc769139649a3c119532493396
   m_configObjects: {}
