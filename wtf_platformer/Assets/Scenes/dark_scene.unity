@@ -11523,7 +11523,7 @@ GameObject:
   - component: {fileID: 1710215178}
   - component: {fileID: 1710215177}
   m_Layer: 0
-  m_Name: harry
+  m_Name: Harry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11685,7 +11685,7 @@ GameObject:
   - component: {fileID: 2082515907}
   - component: {fileID: 2082515908}
   m_Layer: 0
-  m_Name: Point Light (1)
+  m_Name: Lumos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11699,7 +11699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082515906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0.03, z: 0.17}
+  m_LocalPosition: {x: 1.19, y: 0.13, z: 0.17}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1710215178}
@@ -11717,7 +11717,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 6.76
-  m_Range: 7.02
+  m_Range: 7.01
   m_SpotAngle: 108.8
   m_CookieSize: 10
   m_Shadows:
