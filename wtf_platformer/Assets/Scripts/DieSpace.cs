@@ -5,6 +5,7 @@ using UnityEngine;
 public class DieSpace : MonoBehaviour
 {
     public GameObject respawn;
+    public GameObject camera;
 
     void OnTriggerEnter2D (Collider2D other)
     {
@@ -12,6 +13,7 @@ public class DieSpace : MonoBehaviour
         if (other.tag == "Player")
         {
             other.transform.position = respawn.transform.position;
+            camera.transform.position = new Vector3(respawn.transform.position.x + 5f, 0.2f, -10f);
         }
     }
 }

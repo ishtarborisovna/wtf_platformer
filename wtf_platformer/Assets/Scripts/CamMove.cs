@@ -9,6 +9,8 @@ public class CamMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3 (Harry.transform.position.x, 0.2f, -10f);
+        if (Harry.transform.position.x + 5f > transform.position.x)
+            transform.position = new Vector3(Harry.transform.position.x + 5f, 0.2f, -10f);
+
     }
 }

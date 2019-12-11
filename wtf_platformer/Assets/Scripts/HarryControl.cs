@@ -6,6 +6,7 @@ public class HarryControl : MonoBehaviour
 {
     public float speed = 20f;
     private Rigidbody2D rb;
+    private bool faceRight = true;
     
     // Start is called before the first frame update
     void Start()
@@ -21,5 +22,16 @@ public class HarryControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             rb.AddForce(Vector2.up * 4000);
+
+        if (moveX > 0 && !faceRight)
+            flip();
+        else if (moveX < 0 && faceRight)
+            flip();
+    }
+
+    void flip ()
+    {
+        faceRight = !faceRight;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
