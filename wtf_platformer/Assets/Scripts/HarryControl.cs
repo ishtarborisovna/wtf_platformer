@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HarryControl : MonoBehaviour
 {
+    [SerializeField]
     public float speed = 20f;
     private Rigidbody2D rb;
     private bool faceRight = true;
@@ -14,13 +15,23 @@ public class HarryControl : MonoBehaviour
     private float jumpForse = 5.0f;
 
     private bool isGrounded = false;
-    //private Animator animator;
-    //private SpriteRenderer sprite;
-    
-    void Start()
+    private Animator animator;
+    private SpriteRenderer sprite;
+
+
+    private CharState State
+    {
+        get { return (CharState)animator.GetInteger("State"); }
+        set { animator.SetInteger("State", (int)value); }
+    }
+
+
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -30,24 +41,29 @@ public class HarryControl : MonoBehaviour
 
     private void Update()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
+        if (isGrounded) State = CharState.harry_idel;
 
+        //float moveX = Input.GetAxis("Horizontal");
+        //rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
 
+        if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
 
-        if (moveX > 0 && !faceRight)
-            flip();
-        else if (moveX < 0 && faceRight)
-            flip();
+        //if (moveX > 0 && !faceRight)
+        //    flip();
+        //else if (moveX < 0 && faceRight)
+        //    flip();
     }
 
-    private void flip ()
+    private void Run()
     {
-        faceRight = !faceRight;
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-    }
+        Vector3 direction = transform.right * Input.GetAxis("Horizontal");
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
 
+        sprite.flipX = direction.x < 0.0f;
+
+        if (isGrounded) State = CharState.harry_run;
+    }
     private void Jump()
     {
         rb.AddForce(transform.up * jumpForse, ForceMode2D.Impulse);
@@ -59,7 +75,20 @@ public class HarryControl : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.83f);
 
         isGrounded = colliders.Length > 1;
+
+        if (!isGrounded) State = CharState.harry_jump;
     }
 
 
 }
+
+
+public enum CharState
+{
+    harry_idel,
+    harry_run,
+    harry_jump
+}
+
+
+
