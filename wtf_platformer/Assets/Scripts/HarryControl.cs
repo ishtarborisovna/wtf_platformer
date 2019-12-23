@@ -2,29 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HarryControl : MonoBehaviour
+public class HarryControl : Unit
 {
     [SerializeField]
     public float speed = 20f;
     private Rigidbody2D rb;
-    private bool faceRight = true;
-
     [SerializeField]
     private int lives = 5;
     [SerializeField]
     private float jumpForse = 5.0f;
-
     private bool isGrounded = false;
     private Animator animator;
     private SpriteRenderer sprite;
-
-
     private CharState State
     {
         get { return (CharState)animator.GetInteger("State"); }
         set { animator.SetInteger("State", (int)value); }
     }
-
 
 
     private void Awake()
@@ -43,16 +37,8 @@ public class HarryControl : MonoBehaviour
     {
         if (isGrounded) State = CharState.harry_idel;
 
-        //float moveX = Input.GetAxis("Horizontal");
-        //rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
-
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
-
-        //if (moveX > 0 && !faceRight)
-        //    flip();
-        //else if (moveX < 0 && faceRight)
-        //    flip();
     }
 
     private void Run()
@@ -71,8 +57,7 @@ public class HarryControl : MonoBehaviour
 
     private void CheckGround()
     {
-        //это косяк
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.83f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y - 0.7f), 0.2f);
 
         isGrounded = colliders.Length > 1;
 
