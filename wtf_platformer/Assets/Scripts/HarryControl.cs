@@ -15,11 +15,13 @@ public class HarryControl : Unit
     private Animator animator;
     private SpriteRenderer sprite;
 
-    public bool isFacingRight = true;
-    public enum ProjectAxis { onlyX = 0, xAndY = 1 };
-    public ProjectAxis projectAxis = ProjectAxis.onlyX;
+    private bool isFacingRight = true;
+    private enum ProjectAxis {onlyX = 0};
+    private ProjectAxis projectAxis = ProjectAxis.onlyX;
     private float horizontal;
 
+    //public Transform Bullet;
+    [SerializeField]
     private Bullet bullet;
     private CharState State
     {
@@ -33,7 +35,7 @@ public class HarryControl : Unit
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-        bullet = Resources.Load<Bullet>("Bullet");
+        //bullet = Resources.Load<Bullet>("Bullet");
 
     }
 
@@ -79,12 +81,14 @@ public class HarryControl : Unit
 
     private void Shoot()
     {
-        Vector3 position = transform.position; 
-        position.y += 0.8F;
+        
+        Vector3 position = transform.position;
+        //position.x += 0.8f;
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
 
         newBullet.Parent = gameObject;
         newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
+
     }
 
     public override void ReceiveDamage()
