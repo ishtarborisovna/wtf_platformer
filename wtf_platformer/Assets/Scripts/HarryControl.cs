@@ -80,7 +80,6 @@ public class HarryControl : Unit
         else position.x -= 0.8f;
 
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
-        newBullet.Parent = gameObject;
         newBullet.Direction = newBullet.transform.right * (isFacingRight ? 1.0F : -1.0F);
 
     }
@@ -115,8 +114,8 @@ public class HarryControl : Unit
     private void OnTriggerEnter2D(Collider2D collider)
     {
 
-        Bullet bullet = collider.gameObject.GetComponent<Bullet>();
-        if (bullet && bullet.Parent != gameObject)
+        EvilBullet evilbullet = collider.gameObject.GetComponent<EvilBullet>();
+        if (evilbullet)
         {
             ReceiveDamage();
         }

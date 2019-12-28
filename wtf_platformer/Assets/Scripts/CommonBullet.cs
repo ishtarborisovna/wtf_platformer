@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CommonBullet : MonoBehaviour
 {
-    protected GameObject parent;
-    public GameObject Parent { set { parent = value; } get { return parent; } }
 
     protected float speed = 10.0F;
     protected Vector3 direction;

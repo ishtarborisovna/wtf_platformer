@@ -3,10 +3,21 @@ using System.Collections;
 
 public class EvilBullet : CommonBullet
 {
+    
+    private Vector3 harryPos;
+    private Vector3 delta;
 
+    protected override void Start()
+    {
+        harryPos = GameObject.Find("Harry").transform.position;
+        delta = harryPos - transform.position;
+        delta.Normalize();
+
+        Destroy(gameObject, 10F);
+    }
     protected override void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
+        transform.position = transform.position + (delta * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -18,4 +29,5 @@ public class EvilBullet : CommonBullet
             Destroy(gameObject);
         }
     }
+
 }

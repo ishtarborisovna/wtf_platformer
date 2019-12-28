@@ -26,8 +26,6 @@ public class DeathEater : Enemy
 
         EvilBullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as EvilBullet;
 
-        newBullet.Parent = gameObject;
-        newBullet.Direction = newBullet.transform.right * (isFacingLeft ? -1.0F : 1.0F);
     }
 
     
