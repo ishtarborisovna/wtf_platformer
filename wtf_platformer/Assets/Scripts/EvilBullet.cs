@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bullet : CommonBullet
+public class EvilBullet : CommonBullet
 {
 
     protected override void Update()
@@ -11,9 +11,9 @@ public class Bullet : CommonBullet
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Unit unit = collider.GetComponent<Unit>();
+        HarryControl player = collider.GetComponent<HarryControl>();
 
-        if (unit && unit.gameObject != parent)
+        if (player)
         {
             Destroy(gameObject);
         }

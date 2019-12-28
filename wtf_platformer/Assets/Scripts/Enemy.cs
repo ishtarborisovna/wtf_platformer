@@ -19,7 +19,7 @@ public class Enemy : Unit
     {
         Bullet bullet = collider.GetComponent<Bullet>();
 
-        if (bullet && bullet.Parent == player)
+        if (bullet)
         {
             ReceiveDamage();
         }
