@@ -5,7 +5,7 @@ using UnityEngine;
 public class DieSpace : MonoBehaviour
 {
     public GameObject respawn;
-    public GameObject camera;
+    public new GameObject camera;
 
     void OnTriggerEnter2D (Collider2D other)
     {

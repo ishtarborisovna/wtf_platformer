@@ -1,26 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DeathEater : Unit
+public class DeathEater : Enemy
 {
-    protected virtual void Awake() { }
-    protected virtual void Start() { }
-    protected virtual void Update() { }
+    [SerializeField]
+    private float rate = 2.0F;
+    [SerializeField]
+    private Color bulletColor;
+    [SerializeField]
+    private Bullet bullet;
 
-    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    protected override void Start()
     {
-        Bullet bullet = collider.GetComponent<Bullet>();
-
-        if (bullet)
-        {
-            ReceiveDamage();
-        }
-
-        HarryControl harry = collider.GetComponent<HarryControl>();
-
-        if (harry)
-        {
-            harry.ReceiveDamage();
-        }
+        InvokeRepeating("Shoot", rate, rate);
     }
+
+    protected override void Update()
+    {
+        FlipUpdate();
+    }
+
+    private void Shoot()
+    {
+        Vector3 position = transform.position;
+        if (isFacingLeft) position.x -= 0.8f;
+        else position.x += 0.8f;
+
+        Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
+
+        newBullet.Parent = gameObject;
+        newBullet.Direction = newBullet.transform.right * (isFacingLeft ? -1.0F : 1.0F);
+        newBullet.Color = bulletColor;
+    }
+
+    
 }

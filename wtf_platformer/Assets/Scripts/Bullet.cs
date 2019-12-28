@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//[RequireComponent(typeof(Transform))]
 public class Bullet : MonoBehaviour
 {
     private GameObject parent;
@@ -12,6 +11,11 @@ public class Bullet : MonoBehaviour
     private float speed = 10.0F;
     private Vector3 direction;
     public Vector3 Direction { set { direction = value; } }
+
+    public Color Color
+    {
+        set { sprite.color = value; }
+    }
 
     private SpriteRenderer sprite;
 
