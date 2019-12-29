@@ -9,6 +9,16 @@ public class HarryControl : Unit
     private Rigidbody2D rb;
     [SerializeField]
     private int lives = 5;
+    public int Lives
+    {
+        get { return lives; }
+        set
+        {
+            if (value < 5) lives = value;
+            livesBar.Refresh();
+        }
+    }
+    private LivesBar livesBar;
     [SerializeField]
     private float jumpForse = 0.01f;
     private bool isGrounded = false;
@@ -32,7 +42,7 @@ public class HarryControl : Unit
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-
+        livesBar = FindObjectOfType<LivesBar>();
     }
 
     private void FixedUpdate()
@@ -86,7 +96,7 @@ public class HarryControl : Unit
 
     public override void ReceiveDamage()
     {
-        lives--;
+        Lives--;
 
         rb.velocity = Vector3.zero;
         rb.AddForce(transform.up * 15.0F, ForceMode2D.Impulse);
@@ -120,6 +130,7 @@ public class HarryControl : Unit
             ReceiveDamage();
         }
     }
+
 
 }
 
