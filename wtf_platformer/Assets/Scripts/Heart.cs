@@ -16,7 +16,6 @@ public class Heart : MonoBehaviour
         if (harry1)
         {
             harry1.Lives++;
-            livesBar.Refresh();
             Destroy(gameObject);
         }
     }

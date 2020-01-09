@@ -14,8 +14,9 @@ public class HarryControl : Unit
         get { return lives; }
         set
         {
-            if (value < 5) lives = value;
+            if (value < 6) lives = value;
             livesBar.Refresh();
+            Debug.Log(lives);
         }
     }
     private LivesBar livesBar;
@@ -101,7 +102,9 @@ public class HarryControl : Unit
         rb.velocity = Vector3.zero;
         rb.AddForce(transform.up * 15.0F, ForceMode2D.Impulse);
 
-        Debug.Log(lives);
+        livesBar.Refresh();
+
+        //Debug.Log(lives);
     }
 
     private void CheckGround()
