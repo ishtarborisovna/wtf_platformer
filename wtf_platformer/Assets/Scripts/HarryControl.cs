@@ -8,7 +8,7 @@ public class HarryControl : Unit
     public float speed = 20f;
     private Rigidbody2D rb;
     [SerializeField]
-    private int lives = 5;
+    public int lives = 5;
     public int Lives
     {
         get { return lives; }
@@ -19,7 +19,7 @@ public class HarryControl : Unit
             Debug.Log(lives);
         }
     }
-    private LivesBar livesBar;
+    public LivesBar livesBar;
     [SerializeField]
     private float jumpForse = 0.01f;
     private bool isGrounded = false;
@@ -29,6 +29,7 @@ public class HarryControl : Unit
     private bool isFacingRight = true;
     private float horizontal;
 
+
     [SerializeField]
     private Bullet bullet;
     private CharState State
@@ -36,6 +37,15 @@ public class HarryControl : Unit
         get { return (CharState)animator.GetInteger("State"); }
         set { animator.SetInteger("State", (int)value); }
     }
+
+    public static Vector3 playerPosition;
+    public GameObject BackWall;
+    public GameObject Cam;
+
+    private bool delay;
+    private bool delayOrd;
+
+    private bool harryDie;
 
 
     private void Awake()
@@ -64,7 +74,14 @@ public class HarryControl : Unit
         if (Input.GetButton("Horizontal") && isGrounded) State = CharState.harry_run;
         if (Input.GetButtonDown("Fire1")) Shoot();
 
+        if (harryDie && Lives < 1)
+        {
+            //harryDie = false;
+            delayOrd = true;
+            Die();
+        }
     }
+
 
     private void Run()
     {
@@ -103,8 +120,37 @@ public class HarryControl : Unit
         rb.AddForce(transform.up * 15.0F, ForceMode2D.Impulse);
 
         livesBar.Refresh();
+        if (Lives < 1) harryDie = true;
+    }
 
-        //Debug.Log(lives);
+    public override void Die()
+    {
+        if (isGrounded) transform.position = new Vector3(transform.position.x, transform.position.y - (10f * Time.deltaTime), transform.position.z);
+        
+        if (delayOrd)
+        {
+            delayOrd = false;
+            StartCoroutine(DelayTime(2));
+        }
+        if (delay)
+        {
+            delay = false;
+            harryDie = false;
+            Lives = 3;
+            transform.position = playerPosition;
+            Cam.transform.position = new Vector3(transform.position.x + 5f, 0.2f, -10f);
+            BackWall.transform.position = new Vector3(transform.position.x - 4.2f, 0, 0);
+        }
+        
+    }
+
+    IEnumerator DelayTime(int sec)
+    {
+        Debug.Log("DelayTime " + Time.time.ToString() + "s");
+        yield return new WaitForSeconds(sec);
+        
+        delay = true;
+        Debug.Log("DelayTime end " + Time.time.ToString() + "s");
     }
 
     private void CheckGround()
@@ -132,7 +178,15 @@ public class HarryControl : Unit
         {
             ReceiveDamage();
         }
+
+        if (collider.tag == "Die" && Lives > 0)
+            {
+            Lives = 0;
+            harryDie = true;
+        }
     }
+
+    
 
 
 }
