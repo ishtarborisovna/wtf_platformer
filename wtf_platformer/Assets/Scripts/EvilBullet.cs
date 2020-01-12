@@ -13,7 +13,7 @@ public class EvilBullet : CommonBullet
         delta = harryPos - transform.position;
         delta.Normalize();
 
-        Destroy(gameObject, 10F);
+        Destroy(gameObject, 3F);
     }
     protected override void Update()
     {

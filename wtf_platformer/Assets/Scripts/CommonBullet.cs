@@ -14,7 +14,7 @@ public class CommonBullet : MonoBehaviour
 
     protected virtual void Start()
     {
-        Destroy(gameObject, 10F);
+        Destroy(gameObject, 3F);
     }
 
 

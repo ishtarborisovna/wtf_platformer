@@ -74,12 +74,7 @@ public class HarryControl : Unit
         if (Input.GetButton("Horizontal") && isGrounded) State = CharState.harry_run;
         if (Input.GetButtonDown("Fire1")) Shoot();
 
-        if (harryDie && Lives < 1)
-        {
-            //harryDie = false;
-            delayOrd = true;
-            Die();
-        }
+        if (harryDie && Lives < 1) Die();
     }
 
 
@@ -120,17 +115,20 @@ public class HarryControl : Unit
         rb.AddForce(transform.up * 15.0F, ForceMode2D.Impulse);
 
         livesBar.Refresh();
-        if (Lives < 1) harryDie = true;
+        if (Lives < 1)
+        {
+            harryDie = true;
+            delayOrd = true;
+        }
     }
 
     public override void Die()
     {
-        if (isGrounded) transform.position = new Vector3(transform.position.x, transform.position.y - (10f * Time.deltaTime), transform.position.z);
-        
+        Time.timeScale = 0.1f;
         if (delayOrd)
         {
             delayOrd = false;
-            StartCoroutine(DelayTime(2));
+            StartCoroutine(DelayTime(0.1f));
         }
         if (delay)
         {
@@ -139,12 +137,13 @@ public class HarryControl : Unit
             Lives = 3;
             transform.position = playerPosition;
             Cam.transform.position = new Vector3(transform.position.x + 5f, 0.2f, -10f);
-            BackWall.transform.position = new Vector3(transform.position.x - 4.2f, 0, 0);
+            BackWall.transform.position = new Vector3(transform.position.x - 9.2f, 0, 0);
+            Time.timeScale = 1f;
         }
         
     }
 
-    IEnumerator DelayTime(int sec)
+    IEnumerator DelayTime(float sec)
     {
         Debug.Log("DelayTime " + Time.time.ToString() + "s");
         yield return new WaitForSeconds(sec);
@@ -183,6 +182,7 @@ public class HarryControl : Unit
             {
             Lives = 0;
             harryDie = true;
+            delayOrd = true;
         }
     }
 
