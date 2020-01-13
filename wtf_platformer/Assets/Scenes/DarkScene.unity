@@ -16199,6 +16199,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathEater
       objectReference: {fileID: 0}
+    - target: {fileID: 4530743049426755253, guid: a8773f17fef64d741b431cffc8ad2541,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4530743049426755258, guid: a8773f17fef64d741b431cffc8ad2541,
         type: 3}
       propertyPath: m_LocalPosition.x
