@@ -9,6 +9,8 @@ public class Checkpoint : MonoBehaviour
 		if (tr.transform.CompareTag("Player"))
 		{
 			HarryControl.playerPosition = tr.transform.position;
+			Destroy(gameObject);
+			Debug.Log("Kill " + this);
 		}
 	}
 }

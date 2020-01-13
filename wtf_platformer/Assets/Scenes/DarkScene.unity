@@ -13290,6 +13290,16 @@ PrefabInstance:
       propertyPath: Cam
       value: 
       objectReference: {fileID: 1816269967}
+    - target: {fileID: 4289689096037871029, guid: 3c77e2a38bf459c46a45469425708879,
+        type: 3}
+      propertyPath: lives
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289689096037871029, guid: 3c77e2a38bf459c46a45469425708879,
+        type: 3}
+      propertyPath: livesBar
+      value: 
+      objectReference: {fileID: 1382749934}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c77e2a38bf459c46a45469425708879, type: 3}
 --- !u!1001 &4530743049547813507

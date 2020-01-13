@@ -6,6 +6,8 @@ public class HarryControl : Unit
 {
     [SerializeField]
     public float speed = 20f;
+    [SerializeField]
+    public float fallspeed = 3f;
     private Rigidbody2D rb;
     [SerializeField]
     public int lives = 5;
@@ -16,7 +18,7 @@ public class HarryControl : Unit
         {
             if (value < 6) lives = value;
             livesBar.Refresh();
-            Debug.Log(lives);
+            Debug.Log("Lives = " + lives);
         }
     }
     public LivesBar livesBar;
@@ -39,7 +41,6 @@ public class HarryControl : Unit
     }
 
     public static Vector3 playerPosition;
-    public GameObject BackWall;
     public GameObject Cam;
 
     private bool delay;
@@ -54,6 +55,11 @@ public class HarryControl : Unit
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         livesBar = FindObjectOfType<LivesBar>();
+    }
+
+    private void Start()
+    {
+        livesBar.Refresh();
     }
 
     private void FixedUpdate()
@@ -80,7 +86,7 @@ public class HarryControl : Unit
 
     private void Run()
     {
-        rb.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * speed, 0.8f), rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * speed, 0.8f), rb.velocity.y - (fallspeed * Time.deltaTime));
         
         if (Input.GetKey("a") || Input.GetKey("left")) horizontal = -1;
         else if (Input.GetKey("d") || Input.GetKey("right")) horizontal = 1; else horizontal = 0;
@@ -137,7 +143,6 @@ public class HarryControl : Unit
             Lives = 3;
             transform.position = playerPosition;
             Cam.transform.position = new Vector3(transform.position.x + 5f, 0.2f, -10f);
-            BackWall.transform.position = new Vector3(transform.position.x - 9.2f, 0, 0);
             Time.timeScale = 1f;
         }
         

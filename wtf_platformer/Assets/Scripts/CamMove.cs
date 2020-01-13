@@ -13,8 +13,7 @@ public class CamMove : MonoBehaviour
         if (Harry.transform.position.x + 5f > transform.position.x)
         {
             transform.position = new Vector3(Harry.transform.position.x + 5f, 0.2f, -10f);
-            BackWall.transform.position = new Vector3(transform.position.x - 9.2f, 0, 0);
         }
-
+        BackWall.transform.position = new Vector3(transform.position.x - 9.2f, 0, 0);
     }
 }
