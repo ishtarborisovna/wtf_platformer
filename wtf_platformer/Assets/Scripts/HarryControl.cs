@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HarryControl : Unit
 {
@@ -42,12 +43,13 @@ public class HarryControl : Unit
 
     public static Vector3 playerPosition;
     public GameObject Cam;
-
     private bool delay;
     private bool delayOrd;
-
     private bool harryDie;
 
+    public int ruby;
+    public GameObject RubyObject;
+    Text textRuby;
 
     private void Awake()
     {
@@ -55,6 +57,7 @@ public class HarryControl : Unit
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         livesBar = FindObjectOfType<LivesBar>();
+        textRuby = RubyObject.GetComponent<Text>();
     }
 
     private void Start()
@@ -184,14 +187,21 @@ public class HarryControl : Unit
         }
 
         if (collider.tag == "Die" && Lives > 0)
-            {
+        {
             Lives = 0;
             harryDie = true;
             delayOrd = true;
         }
-    }
 
-    
+        if (collider.tag == "Ruby")
+        {
+            ruby++;
+            textRuby.text = ruby.ToString();
+            Destroy(collider.gameObject);
+            Debug.Log("Ruby = " + ruby);
+        }
+
+    }
 
 
 }
