@@ -172,7 +172,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &4289689096037871031
 BoxCollider2D:
@@ -232,7 +232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  lives: 5
+  fallspeed: 3
+  lives: 3
   livesBar: {fileID: 0}
   jumpForse: 15
   bullet: {fileID: 1785329271555972524, guid: 5195de4bee8ade049a1674f9623e4b3d, type: 3}
+  Cam: {fileID: 0}
+  ruby: 0
+  RubyObject: {fileID: 0}

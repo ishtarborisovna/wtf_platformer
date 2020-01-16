@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Die
   - Ruby
+  - Wall
   layers:
   - Default
   - TransparentFX

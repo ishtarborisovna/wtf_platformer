@@ -9,8 +9,11 @@ public class Enemy : Unit
     protected float toLeft;
     protected SpriteRenderer sprite;
 
+    protected Rigidbody2D rb;
+
     protected virtual void Awake() {
         sprite = GetComponentInChildren<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
     protected virtual void Start() { }
     protected virtual void Update() { }
@@ -42,8 +45,9 @@ public class Enemy : Unit
 
     protected void FlipUpdate()
     {
-        if (player.transform.position.x - transform.position.x > 0.3F) toLeft = -1;
-        else if (transform.position.x - player.transform.position.x > 0.3F) toLeft = 1; else toLeft = 0;
+        if (transform.position.x < player.transform.position.x) toLeft = -1;
+        else if (transform.position.x > player.transform.position.x) toLeft = 1;
+        else toLeft = 0;
 
         if (toLeft < 0 && isFacingLeft) Flip();
         else if (toLeft > 0 && !isFacingLeft) Flip();
