@@ -15,27 +15,16 @@ public class Werewolf : Enemy
 
     private float delta;
 
-    private float deltaharry;
-
-    private Vector3 deltaVec;
-
     protected override void Update()
     {
-        if (Mathf.Abs(transform.position.x - player.transform.position.x) < seeDistance)
+        if (transform.position.x < player.transform.position.x) toLeft = -1;
+        else if (transform.position.x > player.transform.position.x) toLeft = 1;
+
+        if (Mathf.Abs(transform.position.x - player.transform.position.x) < seeDistance && ((direction == -1f && toLeft == 1) || (direction == 1f && toLeft == -1)) && Mathf.Abs(transform.position.y - player.transform.position.y) < 2.1f)
         {
-            
-            FlipUpdate();
-
-            deltaVec = new Vector3(player.transform.position.x - transform.position.x, 0, 0);
-            deltaVec.Normalize();
-
-            transform.position = transform.position + (deltaVec * delta * speedfoarse * Time.deltaTime);
-
-            //if (toLeft < 0) deltaharry = 1f;
-            //else if (toLeft > 0) deltaharry = -1f;
-            //rb.velocity = new Vector2(speedfoarse * deltaharry * direction * delta, rb.velocity.y);
+            rb.velocity = new Vector2(speedfoarse * direction * delta, rb.velocity.y);
         }
-        else if (Mathf.Abs(transform.position.x - player.transform.position.x) > seeDistance)
+        else
         {
             rb.velocity = new Vector2(speed * direction, rb.velocity.y);
             delta = 1f;
@@ -55,7 +44,6 @@ public class Werewolf : Enemy
         if (harry)
         {
             delta = -1f;
-            //rb.isKinematic = false;
         }
     }
 

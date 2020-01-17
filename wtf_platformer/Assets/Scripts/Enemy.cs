@@ -52,4 +52,10 @@ public class Enemy : Unit
         if (toLeft < 0 && isFacingLeft) Flip();
         else if (toLeft > 0 && !isFacingLeft) Flip();
     }
+
+    public override void Die()
+    {
+        rb.isKinematic = false;
+        Destroy(gameObject, 1F);
+    }
 }
