@@ -15,30 +15,48 @@ public class Werewolf : Enemy
 
     private float delta;
 
+    private float deltaharry;
+
+    private Vector3 deltaVec;
 
     protected override void Update()
     {
-        if (Mathf.Abs(transform.position.x - player.transform.position.x) < 0.7f) { }
-
-        else if (Mathf.Abs(transform.position.x - player.transform.position.x) < seeDistance && Mathf.Abs(transform.position.x - player.transform.position.x) > 0.7f)
+        if (Mathf.Abs(transform.position.x - player.transform.position.x) < seeDistance)
         {
+            
             FlipUpdate();
-            if (toLeft > 0) delta = -1f;
-            else if (toLeft < 0) delta = 1f;
-            transform.position = new Vector3(transform.position.x + delta * speedfoarse * Time.deltaTime, transform.position.y, transform.position.z);
+
+            deltaVec = new Vector3(player.transform.position.x - transform.position.x, 0, 0);
+            deltaVec.Normalize();
+
+            transform.position = transform.position + (deltaVec * delta * speedfoarse * Time.deltaTime);
+
+            //if (toLeft < 0) deltaharry = 1f;
+            //else if (toLeft > 0) deltaharry = -1f;
+            //rb.velocity = new Vector2(speedfoarse * deltaharry * direction * delta, rb.velocity.y);
         }
-        else 
+        else if (Mathf.Abs(transform.position.x - player.transform.position.x) > seeDistance)
         {
             rb.velocity = new Vector2(speed * direction, rb.velocity.y);
-            if (direction == -1) transform.localScale = new Vector3(1, 1, 1);
-            else transform.localScale = new Vector3(-1, 1, 1);
+            delta = 1f;
         }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         base.OnTriggerEnter2D(collider);
-        if (collider.gameObject.tag == "Wall") { direction *= -1f; }
+        if (collider.gameObject.tag == "Wall") 
+        { 
+            direction *= -1f;
+            Flip(); 
+        }
+
+        HarryControl harry = collider.GetComponent<HarryControl>();
+        if (harry)
+        {
+            delta = -1f;
+            //rb.isKinematic = false;
+        }
     }
 
 
