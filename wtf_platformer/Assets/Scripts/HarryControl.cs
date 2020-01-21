@@ -55,7 +55,7 @@ public class HarryControl : Unit
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
         livesBar = FindObjectOfType<LivesBar>();
         textRuby = RubyObject.GetComponent<Text>();
     }
@@ -92,17 +92,20 @@ public class HarryControl : Unit
         rb.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * speed, 0.8f), rb.velocity.y - (fallspeed * Time.deltaTime));
         
         if (Input.GetKey("a") || Input.GetKey("left")) horizontal = -1;
-        else if (Input.GetKey("d") || Input.GetKey("right")) horizontal = 1; else horizontal = 0;
+        else if (Input.GetKey("d") || Input.GetKey("right")) horizontal = 1; 
 
-        if (horizontal > 0 && !isFacingRight) Flip(); else if (horizontal < 0 && isFacingRight) Flip();
+        //else horizontal = 0;
+        //if (horizontal > 0 && !isFacingRight) Flip(); else if (horizontal < 0 && isFacingRight) Flip();
+
+        sprite.flipX = horizontal == -1;
     }
-    private void Flip()
-    {
-            isFacingRight = !isFacingRight;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
-    }
+    //private void Flip()
+    //{
+    //isFacingRight = !isFacingRight;
+    //Vector3 theScale = transform.localScale;
+    //theScale.x *= -1;
+    //transform.localScale = theScale;
+    //}
 
     private void Shoot()
     {
