@@ -33,6 +33,7 @@ public class HarryControl : Unit
     private float horizontal;
 
 
+
     [SerializeField]
     private Bullet bullet;
     private CharState State
@@ -58,6 +59,8 @@ public class HarryControl : Unit
         sprite = GetComponent<SpriteRenderer>();
         livesBar = FindObjectOfType<LivesBar>();
         textRuby = RubyObject.GetComponent<Text>();
+
+        //dialogHarry.SetActive(false);
     }
 
     private void Start()
@@ -82,7 +85,6 @@ public class HarryControl : Unit
         if (isGrounded) State = CharState.harry_idel;
         if (Input.GetButton("Horizontal") && isGrounded) State = CharState.harry_run;
         if (Input.GetButtonDown("Fire1")) Shoot();
-
         if (harryDie && Lives < 1) Die();
     }
 
@@ -116,7 +118,7 @@ public class HarryControl : Unit
 
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
         newBullet.Direction = newBullet.transform.right * (isFacingRight ? 1.0F : -1.0F);
-
+        
     }
 
     public override void ReceiveDamage()
