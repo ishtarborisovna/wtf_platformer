@@ -29,8 +29,8 @@ public class HarryControl : Unit
     private Animator animator;
     private SpriteRenderer sprite;
 
-    private bool isFacingRight = true;
-    private float horizontal;
+    //private bool isFacingRight = true;
+    private float horizontal = 1;
 
 
 
@@ -113,12 +113,13 @@ public class HarryControl : Unit
     {
         
         Vector3 position = transform.position;
-        if (isFacingRight) position.x += 0.8f;
+        //if (isFacingRight) position.x += 0.8f;
+        if (horizontal == 1) position.x += 0.8f;
         else position.x -= 0.8f;
 
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
-        newBullet.Direction = newBullet.transform.right * (isFacingRight ? 1.0F : -1.0F);
-        
+        //newBullet.Direction = newBullet.transform.right * (isFacingRight ? 1.0F : -1.0F);
+        newBullet.Direction = newBullet.transform.right * horizontal;
     }
 
     public override void ReceiveDamage()
