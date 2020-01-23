@@ -16,6 +16,10 @@ public class DeathEater : Enemy
     protected override void Update()
     {
         FlipUpdate();
+        //if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
+        //{
+        //    InvokeRepeating("Shoot", rate, rate);
+        //}
     }
 
     private void Shoot()
