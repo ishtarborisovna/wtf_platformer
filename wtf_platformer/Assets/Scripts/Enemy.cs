@@ -8,12 +8,13 @@ public class Enemy : Unit
     public HarryControl player;
     protected float toLeft;
     protected SpriteRenderer sprite;
-
+    protected Animator animator;
     protected Rigidbody2D rb;
 
     protected virtual void Awake() {
         sprite = GetComponentInChildren<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
     protected virtual void Start() { }
     protected virtual void Update() { }

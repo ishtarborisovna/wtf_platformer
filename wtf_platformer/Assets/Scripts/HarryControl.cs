@@ -127,7 +127,7 @@ public class HarryControl : Unit
         Lives--;
 
         rb.velocity = Vector3.zero;
-        rb.AddForce(transform.up * 15.0F, ForceMode2D.Impulse);
+        rb.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
 
         livesBar.Refresh();
         if (Lives < 1)
@@ -174,8 +174,17 @@ public class HarryControl : Unit
 
         if (!isGrounded)
         {
-            State = CharState.harry_jump;
             rb.drag = 0;
+        }
+
+        if (!isGrounded && rb.velocity.y > 0f)
+        {
+            State = CharState.harry_jump;
+        }
+
+        if (!isGrounded && rb.velocity.y < 0f)
+        {
+            State = CharState.harry_jump_down;
         }
 
         if (isGrounded) rb.drag = 10;
@@ -217,7 +226,8 @@ public enum CharState
 {
     harry_idel,
     harry_run,
-    harry_jump
+    harry_jump,
+    harry_jump_down
 }
 
 
