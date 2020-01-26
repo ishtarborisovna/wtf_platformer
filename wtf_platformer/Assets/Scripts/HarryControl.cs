@@ -51,6 +51,7 @@ public class HarryControl : Unit
     public GameObject RubyObject;
     Text textRuby;
     public GameObject DialogH;
+    public GameObject Zastav;
 
     private void Awake()
     {
@@ -82,7 +83,7 @@ public class HarryControl : Unit
     {
         if (isGrounded) State = CharState.harry_idel;
         if (Input.GetButton("Horizontal") && isGrounded) State = CharState.harry_run;
-        if (Input.GetButtonDown("Fire1") && !DialogH.activeInHierarchy) Shoot();
+        if (Input.GetButtonDown("Fire1") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) Shoot();
         if (harryDie && Lives < 1) Die();
     }
 
