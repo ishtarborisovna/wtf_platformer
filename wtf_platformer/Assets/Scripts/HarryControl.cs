@@ -29,7 +29,6 @@ public class HarryControl : Unit
     private Animator animator;
     private SpriteRenderer sprite;
 
-    //private bool isFacingRight = true;
     private float horizontal = 1;
 
 
@@ -51,6 +50,7 @@ public class HarryControl : Unit
     public int ruby;
     public GameObject RubyObject;
     Text textRuby;
+    public GameObject DialogH;
 
     private void Awake()
     {
@@ -59,8 +59,6 @@ public class HarryControl : Unit
         sprite = GetComponent<SpriteRenderer>();
         livesBar = FindObjectOfType<LivesBar>();
         textRuby = RubyObject.GetComponent<Text>();
-
-        //dialogHarry.SetActive(false);
     }
 
     private void Start()
@@ -84,7 +82,7 @@ public class HarryControl : Unit
     {
         if (isGrounded) State = CharState.harry_idel;
         if (Input.GetButton("Horizontal") && isGrounded) State = CharState.harry_run;
-        if (Input.GetButtonDown("Fire1")) Shoot();
+        if (Input.GetButtonDown("Fire1") && !DialogH.activeInHierarchy) Shoot();
         if (harryDie && Lives < 1) Die();
     }
 
@@ -96,29 +94,17 @@ public class HarryControl : Unit
         if (Input.GetKey("a") || Input.GetKey("left")) horizontal = -1;
         else if (Input.GetKey("d") || Input.GetKey("right")) horizontal = 1; 
 
-        //else horizontal = 0;
-        //if (horizontal > 0 && !isFacingRight) Flip(); else if (horizontal < 0 && isFacingRight) Flip();
-
         sprite.flipX = horizontal == -1;
     }
-    //private void Flip()
-    //{
-    //isFacingRight = !isFacingRight;
-    //Vector3 theScale = transform.localScale;
-    //theScale.x *= -1;
-    //transform.localScale = theScale;
-    //}
 
     private void Shoot()
     {
         
         Vector3 position = transform.position;
-        //if (isFacingRight) position.x += 0.8f;
         if (horizontal == 1) position.x += 0.8f;
         else position.x -= 0.8f;
 
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
-        //newBullet.Direction = newBullet.transform.right * (isFacingRight ? 1.0F : -1.0F);
         newBullet.Direction = newBullet.transform.right * horizontal;
     }
 
