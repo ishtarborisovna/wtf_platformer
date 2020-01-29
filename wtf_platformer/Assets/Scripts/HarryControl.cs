@@ -138,7 +138,7 @@ public class HarryControl : Unit
             harryDie = false;
             Lives = 3;
             transform.position = playerPosition;
-            Cam.transform.position = new Vector3(transform.position.x + 5f, 0.2f, -10f);
+            Cam.transform.position = new Vector3(transform.position.x + 3f, 0.2f, -10f);
             Time.timeScale = 1f;
         }
         
@@ -159,19 +159,17 @@ public class HarryControl : Unit
 
         isGrounded = colliders.Length > 1;
 
-        if (!isGrounded)
-        {
-            rb.drag = 0;
-        }
 
         if (!isGrounded && rb.velocity.y > 0f)
         {
             State = CharState.harry_jump;
+            rb.drag = 0;
         }
 
-        if (!isGrounded && rb.velocity.y < 0f)
+        if (!isGrounded && rb.velocity.y <= 0f)
         {
             State = CharState.harry_jump_down;
+            rb.drag = 0;
         }
 
         if (isGrounded) rb.drag = 10;

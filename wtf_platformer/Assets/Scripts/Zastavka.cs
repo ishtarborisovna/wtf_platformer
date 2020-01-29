@@ -5,12 +5,15 @@ using UnityEngine;
 public class Zastavka : MonoBehaviour
 {
     public GameObject Zastav;
+    private float rate = 5F;
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && Zastav.activeInHierarchy)
         {
-            Zastav.SetActive(false);
+            rate = 0.1f;
         }
+        rate -= Time.deltaTime;
+        if (rate <= 0) Zastav.SetActive(false);
     }
 }

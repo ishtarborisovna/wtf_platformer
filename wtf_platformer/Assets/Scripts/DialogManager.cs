@@ -16,8 +16,13 @@ public class DialogManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1")) DisplayNextSentence();
+        if (Input.GetButtonDown("Fire1")) 
+        {
+            DisplayNextSentence(); 
+        
+        }
     }
+
 
     public void StartDialog(Dialog dialog)
     {
