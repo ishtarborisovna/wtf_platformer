@@ -67,24 +67,31 @@ public class HarryControl : Unit
         livesBar.Refresh();
     }
 
-    private void FixedUpdate()
-    {
-        CheckGround();
-        Run();
+    //private void FixedUpdate()
+    //{
+    //    //CheckGround();
+    //    //Run();
 
-        if (isGrounded && Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = new Vector2(0, jumpForse);
-        }
+    //    //if (isGrounded && Input.GetButtonDown("Jump") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
+    //    //{
+    //    //    rb.velocity = new Vector2(0, jumpForse);
+    //    //}
 
-    }
+    //}
 
     private void Update()
     {
+        CheckGround();
+        Run();
         if (isGrounded) State = CharState.harry_idel;
-        if (Input.GetButton("Horizontal") && isGrounded) State = CharState.harry_run;
+        if (Input.GetButton("Horizontal") && isGrounded && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) State = CharState.harry_run;
         if (Input.GetButtonDown("Fire1") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) Shoot();
         if (harryDie && Lives < 1) Die();
+
+        if (isGrounded && Input.GetButtonDown("Jump") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
+        {
+            rb.velocity = new Vector2(0, jumpForse);
+        }
     }
 
 
