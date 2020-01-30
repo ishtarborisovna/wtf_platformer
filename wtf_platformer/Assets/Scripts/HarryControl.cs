@@ -69,20 +69,13 @@ public class HarryControl : Unit
 
     private void FixedUpdate()
     {
-        //CheckGround();
-        Run();
-
-        //if (isGrounded && Input.GetButtonDown("Jump") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
-        //{
-        //    rb.velocity = new Vector2(0, jumpForse);
-        //}
+        if (!DialogH.activeInHierarchy && !Zastav.activeInHierarchy) Run();
 
     }
 
     private void Update()
     {
         CheckGround();
-        //Run();
         if (isGrounded) State = CharState.harry_idel;
         if (Input.GetButton("Horizontal") && isGrounded && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) State = CharState.harry_run;
         if (Input.GetButtonDown("Fire1") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) Shoot();

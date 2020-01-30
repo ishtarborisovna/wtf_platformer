@@ -14,7 +14,11 @@ public class Werewolf : Enemy
     private float direction = -1f;
 
     private float delta;
-
+    private WolfState State
+    {
+        get { return (WolfState)animator.GetInteger("State"); }
+        set { animator.SetInteger("State", (int)value); }
+    }
     protected override void Update()
     {
         if (transform.position.x < player.transform.position.x) toLeft = -1;
@@ -29,6 +33,9 @@ public class Werewolf : Enemy
             rb.velocity = new Vector2(speed * direction, rb.velocity.y);
             delta = 1f;
         }
+
+        if (delta == -1f) State = WolfState.werewolf_back;
+        else State = WolfState.werwolf;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
@@ -50,3 +57,8 @@ public class Werewolf : Enemy
 
 }
 
+public enum WolfState
+{
+    werwolf,
+    werewolf_back
+}
