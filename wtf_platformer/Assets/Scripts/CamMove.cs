@@ -6,11 +6,13 @@ public class CamMove : MonoBehaviour
 {
     public GameObject Harry;
     public GameObject BackWall;
+    public GameObject Horcrux;
 
     // Update is called once per frame
     void Update()
     {
-        if (Harry.transform.position.x + 3f > transform.position.x)
+        //if (Harry.transform.position.x + 3f > transform.position.x && transform.position.x <= Horcrux.transform.position.x)
+        if (Harry.transform.position.x + 3f > transform.position.x && transform.position.x <= 396.83f)
         {
             transform.position = new Vector3(Harry.transform.position.x + 3f, 0.2f, -10f);
         }

@@ -7,6 +7,8 @@ TagManager:
   - Die
   - Ruby
   - Wall
+  - Enemy
+  - Guard
   layers:
   - Default
   - TransparentFX
