@@ -8,6 +8,7 @@ public class DialogManager : MonoBehaviour
     private Queue<string> sentences;
     public GameObject DialogH;
     Text dialodText;
+    public AudioClip dialogAudio;
     void Start()
     {
         sentences = new Queue<string>();
@@ -45,6 +46,7 @@ public class DialogManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         Debug.Log(sentence);
         dialodText.text = sentence;
+        GetComponent<AudioSource>().PlayOneShot(dialogAudio);
     }
 
     public void EndDialog()

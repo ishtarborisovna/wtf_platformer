@@ -53,6 +53,10 @@ public class HarryControl : Unit
     public GameObject DialogH;
     public GameObject Zastav;
 
+    public AudioClip coin;
+    public AudioClip deathAudio;
+    public AudioClip heartAudio;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -126,6 +130,7 @@ public class HarryControl : Unit
 
     public override void Die()
     {
+        //GetComponent<AudioSource>().PlayOneShot(deathAudio);
         Time.timeScale = 0.1f;
         if (delayOrd)
         {
@@ -196,11 +201,18 @@ public class HarryControl : Unit
         if (collider.tag == "Ruby")
         {
             ruby++;
+            GetComponent<AudioSource>().PlayOneShot(coin);
             textRuby.text = ruby.ToString();
             Destroy(collider.gameObject);
             Debug.Log("Ruby = " + ruby);
         }
 
+        if (collider.tag == "Heart")
+        {
+            Lives++;
+            GetComponent<AudioSource>().PlayOneShot(heartAudio);
+            Destroy(collider.gameObject);
+        }
     }
 
 

@@ -10,6 +10,7 @@ public class Enemy : Unit
     protected SpriteRenderer sprite;
     protected Animator animator;
     protected Rigidbody2D rb;
+    public AudioClip hit2;
 
     protected virtual void Awake() {
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -57,6 +58,7 @@ public class Enemy : Unit
     public override void Die()
     {
         rb.isKinematic = false;
+        GetComponent<AudioSource>().PlayOneShot(hit2);
         Destroy(gameObject, 1F);
     }
 }

@@ -12,7 +12,7 @@ public class EvilBullet : CommonBullet
         harryPos = GameObject.Find("Harry").transform.position;
         delta = harryPos - transform.position;
         delta.Normalize();
-
+        GetComponent<AudioSource>().PlayOneShot(spell);
         Destroy(gameObject, 1F);
     }
     protected override void Update()

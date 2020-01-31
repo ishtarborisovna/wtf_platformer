@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Enemy
   - Guard
+  - Heart
   layers:
   - Default
   - TransparentFX

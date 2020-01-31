@@ -8,7 +8,7 @@ public class DeathEater : Enemy
     [SerializeField]
     private EvilBullet bullet;
     private bool isAlive = true;
-    
+    public AudioClip hitDE;
 
     protected override void Update()
     {
@@ -34,6 +34,7 @@ public class DeathEater : Enemy
     {
         isAlive = false;
         rb.isKinematic = false;
+        GetComponent<AudioSource>().PlayOneShot(hitDE);
         Destroy(gameObject, 1F);
     }
 }
