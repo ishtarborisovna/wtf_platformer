@@ -47,7 +47,7 @@ public class HarryControl : Unit
     private bool delayOrd;
     private bool harryDie;
 
-    public int ruby;
+    public static int ruby;
     public GameObject RubyObject;
     Text textRuby;
     public GameObject DialogH;
@@ -69,6 +69,8 @@ public class HarryControl : Unit
     private void Start()
     {
         livesBar.Refresh();
+        ruby = GameManagerScript.points;
+        textRuby.text = ruby.ToString();
     }
 
     private void FixedUpdate()
