@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ae7d78ed8cba54aa355ad45d10b089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 416140771, guid: 9e96f9b8ce5b4e7489b4faacc1dfc384, type: 3}
   hit2: {fileID: 8300000, guid: 7c03a3273b834824bac78715a0b25e15, type: 3}
   rate: 2
   bullet: {fileID: 3081983172465535158, guid: 18775287eac1d71408c5426d5aac3395, type: 3}
