@@ -16,12 +16,12 @@ GameObject:
   - component: {fileID: 416140771}
   - component: {fileID: 416140777}
   m_Layer: 0
-  m_Name: Harry 1
+  m_Name: Harry
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &416140776
 Transform:
   m_ObjectHideFlags: 0

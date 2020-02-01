@@ -6,7 +6,7 @@ public class CamMove : MonoBehaviour
 {
     public GameObject Harry;
     //public GameObject BackWall;
-    public GameObject Horcrux;
+    //public GameObject Horcrux;
 
     
     void Update()
