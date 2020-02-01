@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3431634775109377101}
   - component: {fileID: 3431634775109377100}
   - component: {fileID: 3431634775109377103}
+  - component: {fileID: 4978118628100994855}
   m_Layer: 0
   m_Name: Ruby
   m_TagString: Ruby
@@ -115,3 +116,22 @@ PolygonCollider2D:
       - {x: 0.44927505, y: 0.49633664}
       - {x: 0.11325486, y: 0.49617636}
       - {x: -0.29, y: 0.29}
+--- !u!95 &4978118628100994855
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3431634775109377102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: afcc7313eac27f5409ca3ae2f633c8e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
