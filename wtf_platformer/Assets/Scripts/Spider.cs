@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Spider : Enemy
 {
-    [SerializeField]
-    private float speed = 6.0F;
-    private float speeddown = 10.0F;
+    
+    private float speed;
+    private float speeddown = 16.0F;
     private float direction = 1f;
     private bool sleeping = true;
     private float seeDistance = 2f;
@@ -18,6 +18,11 @@ public class Spider : Enemy
         set { animator.SetInteger("State", (int)value); }
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        speed = Random.Range(10.0f, 14.0f);
+    }
     protected override void Update()
     {
         CheckGround();
@@ -48,6 +53,11 @@ public class Spider : Enemy
             Flip();
             
         }
+        if (collider.tag == "Die")
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void CheckGround()
