@@ -30,7 +30,7 @@ public class HarryControl : Unit
     private SpriteRenderer sprite;
 
     private float horizontal = 1;
-
+    private int isWalk = 0;
 
 
     [SerializeField]
@@ -56,6 +56,9 @@ public class HarryControl : Unit
     public AudioClip coin;
     public AudioClip deathAudio;
     public AudioClip heartAudio;
+
+    public int directionInput;
+    public GameObject MobilMove;
 
     private void Awake()
     {
@@ -83,36 +86,52 @@ public class HarryControl : Unit
     {
         CheckGround();
         if (isGrounded) State = CharState.harry_idel;
-        if (Input.GetButton("Horizontal") && isGrounded && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) State = CharState.harry_run;
-        if (Input.GetButtonDown("Fire1") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) Shoot();
-        if (harryDie && Lives < 1) Die();
+        if ((Input.GetButton("Horizontal") || directionInput != 0) && isGrounded && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) State = CharState.harry_run;
+        if (Input.GetButton("Horizontal")) isWalk = 1;
+        else isWalk = 0;
 
-        if (isGrounded && Input.GetButtonDown("Jump") && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
-        {
-            rb.velocity = new Vector2(0, jumpForse);
-        }
+        if (Input.GetButtonDown("Fire1") && !MobilMove.activeInHierarchy) Shoot(true);
+        if (harryDie && Lives < 1) Die();
+        if (Input.GetButtonDown("Jump")) Jump(true);
     }
 
 
     private void Run()
     {
-        rb.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * speed, 0.8f), rb.velocity.y - (fallspeed * Time.deltaTime));
-        
-        if (Input.GetKey("a") || Input.GetKey("left")) horizontal = -1;
-        else if (Input.GetKey("d") || Input.GetKey("right")) horizontal = 1; 
+        if (MobilMove.activeInHierarchy) rb.velocity = new Vector2(Mathf.Lerp(0, directionInput * speed, 0.8f), rb.velocity.y - (fallspeed * Time.deltaTime));
+        else rb.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * speed, 0.8f) * isWalk, rb.velocity.y - (fallspeed * Time.deltaTime));
+
+        if (Input.GetKey("a") || Input.GetKey("left") || directionInput < 0) horizontal = -1;
+        else if (Input.GetKey("d") || Input.GetKey("right") || directionInput > 0) horizontal = 1; 
 
         sprite.flipX = horizontal == -1;
     }
 
-    private void Shoot()
+    public void Jump(bool isJump)
     {
-        
-        Vector3 position = transform.position;
-        if (horizontal == 1) position.x += 0.8f;
-        else position.x -= 0.8f;
+        if (isGrounded && isJump && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
+        {
+            rb.velocity = new Vector2(0, jumpForse);
+        }
+    }
 
-        Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
-        newBullet.Direction = newBullet.transform.right * horizontal;
+    public void Move(int InputAxis)
+    {
+        directionInput = InputAxis;
+    }
+
+    public void Shoot(bool isShoot)
+    {
+        if (isShoot && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
+
+        {
+            Vector3 position = transform.position;
+            if (horizontal == 1) position.x += 0.8f;
+            else position.x -= 0.8f;
+
+            Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
+            newBullet.Direction = newBullet.transform.right * horizontal;
+        }
     }
 
     public override void ReceiveDamage()
