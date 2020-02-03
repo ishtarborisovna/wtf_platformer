@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &416140776
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   bullet: {fileID: 794184022, guid: d2b701f275cc1ce46bd206bb2e1ae899, type: 3}
   Cam: {fileID: 0}
   RubyObject: {fileID: 0}
-  DialogH: {fileID: 919721107}
+  DialogH: {fileID: 0}
   Zastav: {fileID: 0}
   coin: {fileID: 8300000, guid: 1814234913e70314ca2da7a71f5b90c8, type: 3}
   deathAudio: {fileID: 8300000, guid: 52d8e97347cc5de4a8cd81570e49d87c, type: 3}
