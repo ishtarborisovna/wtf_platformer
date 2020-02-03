@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogTrigger : MonoBehaviour
 {
     public Dialog dialog;
+    public GameObject Zastav;
 
     public void TriggerDialog()
     {
@@ -12,11 +13,11 @@ public class DialogTrigger : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    protected virtual void OnTriggerStay2D(Collider2D collider)
     {
         HarryControl harry = collider.GetComponent<HarryControl>();
 
-        if (harry)
+        if (harry && !Zastav.activeInHierarchy)
         {
             TriggerDialog();
         }

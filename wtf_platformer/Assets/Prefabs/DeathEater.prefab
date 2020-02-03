@@ -198,6 +198,7 @@ MonoBehaviour:
   rate: 2
   bullet: {fileID: 3081983172465535158, guid: 18775287eac1d71408c5426d5aac3395, type: 3}
   hitDE: {fileID: 8300000, guid: 4053f67a416efdf49bd5504b33248649, type: 3}
+  DialogH: {fileID: 9086521614045871430, guid: 21b891762705db5499b7c2500f35fe5d, type: 3}
 --- !u!82 &7579588902858010361
 AudioSource:
   m_ObjectHideFlags: 0

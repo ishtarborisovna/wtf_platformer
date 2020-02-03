@@ -21,7 +21,7 @@ public class Spider : Enemy
     protected override void Start()
     {
         base.Start();
-        speed = Random.Range(10.0f, 14.0f);
+        speed = Random.Range(8.0f, 12.0f);
     }
     protected override void Update()
     {

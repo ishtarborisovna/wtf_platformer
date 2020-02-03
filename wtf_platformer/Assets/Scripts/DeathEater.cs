@@ -9,12 +9,13 @@ public class DeathEater : Enemy
     private EvilBullet bullet;
     private bool isAlive = true;
     public AudioClip hitDE;
+    public GameObject DialogH;
 
     protected override void Update()
     {
         FlipUpdate();
         rate -= Time.deltaTime;
-        if(rate <= 0 && Mathf.Abs(transform.position.x - player.transform.position.x) < 18f && isAlive)
+        if(rate <= 0 && Mathf.Abs(transform.position.x - player.transform.position.x) < 18f && isAlive && !DialogH.activeInHierarchy)
         {
             Shoot();
         }
