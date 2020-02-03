@@ -8,6 +8,7 @@
 *.csproj
 *.pyc
 
+
 -tk2d.asset*
 .DS_Store
 sysinfo.txt
@@ -24,6 +25,7 @@ build_ios
 /log
 /obj
 /Temp/
+/Builds/
 
 .externalNativeBuild
 .gradle
