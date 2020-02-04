@@ -45,6 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae0a1b593964204094284d1e9aa95e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MobilMove: {fileID: 5433434320990193551, guid: 9854e7aa52a33aa46b3fa2a0bd9ad077,
+    type: 3}
+  PlatformWindow: {fileID: 3558815596432507264, guid: cd43d9795ac3b274ea07a1b7aa781983,
+    type: 3}
+  Zastavka: {fileID: 6989536341152068224, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6,
+    type: 3}
 --- !u!81 &922282139484777340
 AudioListener:
   m_ObjectHideFlags: 0
