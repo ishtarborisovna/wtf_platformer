@@ -73,3 +73,5 @@ MonoBehaviour:
   dialog:
     sentences:
     - 
+  Zastav: {fileID: 0}
+  DialogH: {fileID: 9086521614045871430, guid: 21b891762705db5499b7c2500f35fe5d, type: 3}

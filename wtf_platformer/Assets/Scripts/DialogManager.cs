@@ -9,6 +9,8 @@ public class DialogManager : MonoBehaviour
     public GameObject DialogH;
     Text dialodText;
     public AudioClip dialogAudio;
+    private float rate = 3F;
+
     void Start()
     {
         sentences = new Queue<string>();
@@ -17,10 +19,14 @@ public class DialogManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1")) 
+        if (Input.GetButtonDown("Fire2")) 
         {
-            DisplayNextSentence(); 
-        
+            rate = 0f;
+        }
+        rate -= Time.deltaTime;
+        if (rate <= 0)
+        {
+            DisplayNextSentence();
         }
     }
 
@@ -38,6 +44,7 @@ public class DialogManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        rate = 3f;
         if (sentences.Count == 0)
         {
             EndDialog();

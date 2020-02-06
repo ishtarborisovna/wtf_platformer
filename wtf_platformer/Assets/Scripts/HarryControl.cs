@@ -50,7 +50,7 @@ public class HarryControl : Unit
     public static int ruby;
     public GameObject RubyObject;
     Text textRuby;
-    public GameObject DialogH;
+    //public GameObject DialogH;
     public GameObject Zastav;
 
     public AudioClip coin;
@@ -78,7 +78,7 @@ public class HarryControl : Unit
 
     private void FixedUpdate()
     {
-        if (!DialogH.activeInHierarchy && !Zastav.activeInHierarchy) Run();
+        if (!Zastav.activeInHierarchy) Run();
 
     }
 
@@ -86,7 +86,7 @@ public class HarryControl : Unit
     {
         CheckGround();
         if (isGrounded) State = CharState.harry_idel;
-        if ((Input.GetButton("Horizontal") || directionInput != 0) && isGrounded && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy) State = CharState.harry_run;
+        if ((Input.GetButton("Horizontal") || directionInput != 0) && isGrounded &&!Zastav.activeInHierarchy) State = CharState.harry_run;
         if (Input.GetButton("Horizontal")) isWalk = 1;
         else isWalk = 0;
 
@@ -109,7 +109,7 @@ public class HarryControl : Unit
 
     public void Jump(bool isJump)
     {
-        if (isGrounded && isJump && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
+        if (isGrounded && isJump && !Zastav.activeInHierarchy)
         {
             rb.velocity = new Vector2(0, jumpForse);
         }
@@ -122,7 +122,7 @@ public class HarryControl : Unit
 
     public void Shoot(bool isShoot)
     {
-        if (isShoot && !DialogH.activeInHierarchy && !Zastav.activeInHierarchy)
+        if (isShoot && !Zastav.activeInHierarchy)
 
         {
             Vector3 position = transform.position;
