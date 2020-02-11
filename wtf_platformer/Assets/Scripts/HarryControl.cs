@@ -60,6 +60,8 @@ public class HarryControl : Unit
     public int directionInput;
     public GameObject MobilMove;
 
+    public GameObject Lumos;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -105,6 +107,11 @@ public class HarryControl : Unit
         else if (Input.GetKey("d") || Input.GetKey("right") || directionInput > 0) horizontal = 1; 
 
         sprite.flipX = horizontal == -1;
+        
+
+        if (Lumos.activeInHierarchy && horizontal == 1) Lumos.transform.localPosition = new Vector3(0.59f, 0.13f, 0.17f);
+        if (Lumos.activeInHierarchy && horizontal == -1) Lumos.transform.localPosition = new Vector3(-0.59f, 0.13f, 0.17f);
+
     }
 
     public void Jump(bool isJump)

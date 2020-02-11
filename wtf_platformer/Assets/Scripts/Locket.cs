@@ -10,7 +10,7 @@ public class Locket : MonoBehaviour
         if (collider.tag == "Player")
         {
             GameManagerScript.points = HarryControl.ruby;
-            SceneManager.LoadScene("Lvl2");
+            SceneManager.LoadScene("Lvl4");
         }
     }
 }

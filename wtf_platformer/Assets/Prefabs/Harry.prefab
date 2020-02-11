@@ -178,6 +178,7 @@ MonoBehaviour:
   heartAudio: {fileID: 8300000, guid: 517feaf7f5e6e314486cc01dcbfb98c7, type: 3}
   directionInput: 0
   MobilMove: {fileID: 0}
+  Lumos: {fileID: 652964004}
 --- !u!82 &416140777
 AudioSource:
   m_ObjectHideFlags: 0
