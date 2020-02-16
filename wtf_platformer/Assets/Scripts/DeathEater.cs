@@ -7,7 +7,7 @@ public class DeathEater : Enemy
     private float rate = 2F;
     [SerializeField]
     private EvilBullet bullet;
-    private bool isAlive = true;
+    //private bool isAlive = true;
     public AudioClip hitDE;
     public GameObject DialogH;
 
@@ -15,7 +15,7 @@ public class DeathEater : Enemy
     {
         FlipUpdate();
         rate -= Time.deltaTime;
-        if(rate <= 0 && Mathf.Abs(transform.position.x - player.transform.position.x) < 18f && isAlive && !DialogH.activeInHierarchy)
+        if(rate <= 0 && Mathf.Abs(transform.position.x - player.transform.position.x) < 18f && Mathf.Abs(transform.position.y - player.transform.position.y) < 10f && isAlive && !DialogH.activeInHierarchy)
         {
             Shoot();
         }

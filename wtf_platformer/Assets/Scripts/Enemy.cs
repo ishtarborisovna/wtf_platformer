@@ -12,6 +12,8 @@ public class Enemy : Unit
     protected Rigidbody2D rb;
     public AudioClip hit2;
 
+    protected bool isAlive = true;
+
     protected virtual void Awake() {
         sprite = GetComponentInChildren<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public class Enemy : Unit
 
         HarryControl harry = collider.GetComponent<HarryControl>();
 
-        if (harry)
+        if (harry && isAlive)
         {
             harry.ReceiveDamage();
         }
@@ -57,6 +59,7 @@ public class Enemy : Unit
 
     public override void Die()
     {
+        isAlive = false;
         rb.isKinematic = false;
         GetComponent<AudioSource>().PlayOneShot(hit2);
         Destroy(gameObject, 1F);
