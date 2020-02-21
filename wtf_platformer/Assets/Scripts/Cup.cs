@@ -21,7 +21,7 @@ public class Cup : MonoBehaviour
 
     private void Move()
     {
-        if (transform.position.y > 75.99f)
+        if (transform.position.y > 79.88f)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - (1 * Time.deltaTime));
         }
