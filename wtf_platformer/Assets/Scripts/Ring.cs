@@ -33,7 +33,10 @@ public class Ring : MonoBehaviour
         if (collider.tag == "Player" && active)
         {
             GameManagerScript.points = HarryControl.ruby;
-            SceneManager.LoadScene("Lvl4");
+            GameManagerScript.lvl = "Lvl3";
+            PlayerPrefs.SetString("SaveLvl", GameManagerScript.lvl);
+            PlayerPrefs.SetInt("SavePoints", GameManagerScript.points);
+            SceneManager.LoadScene("Lvl3");
         }
     }
 }

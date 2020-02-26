@@ -10,6 +10,9 @@ public class Locket : MonoBehaviour
         if (collider.tag == "Player")
         {
             GameManagerScript.points = HarryControl.ruby;
+            GameManagerScript.lvl = "Lvl4";
+            PlayerPrefs.SetString("SaveLvl", GameManagerScript.lvl);
+            PlayerPrefs.SetInt("SavePoints", GameManagerScript.points);
             SceneManager.LoadScene("Lvl4");
         }
     }

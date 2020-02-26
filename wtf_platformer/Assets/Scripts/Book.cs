@@ -33,6 +33,9 @@ public class Book : MonoBehaviour
         if (collider.tag == "Player" && active)
         {
             GameManagerScript.points = HarryControl.ruby;
+            GameManagerScript.lvl = "Lvl2";
+            PlayerPrefs.SetString("SaveLvl", GameManagerScript.lvl);
+            PlayerPrefs.SetInt("SavePoints", GameManagerScript.points);
             SceneManager.LoadScene("Lvl2");
         }
     }

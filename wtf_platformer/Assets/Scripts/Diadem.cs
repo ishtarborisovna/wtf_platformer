@@ -15,6 +15,9 @@ public class Diadem : MonoBehaviour
         if (ToLvl6.activeInHierarchy)
         {
             GameManagerScript.points = HarryControl.ruby;
+            GameManagerScript.lvl = "Lvl6";
+            PlayerPrefs.SetString("SaveLvl", GameManagerScript.lvl);
+            PlayerPrefs.SetInt("SavePoints", GameManagerScript.points);
             SceneManager.LoadScene("Lvl6");
         }
     }

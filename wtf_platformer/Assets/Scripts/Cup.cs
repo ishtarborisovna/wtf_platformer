@@ -33,7 +33,10 @@ public class Cup : MonoBehaviour
         if (collider.tag == "Player" && active)
         {
             GameManagerScript.points = HarryControl.ruby;
-            SceneManager.LoadScene("Lvl2");
+            GameManagerScript.lvl = "Lvl5";
+            PlayerPrefs.SetString("SaveLvl", GameManagerScript.lvl);
+            PlayerPrefs.SetInt("SavePoints", GameManagerScript.points);
+            SceneManager.LoadScene("Lvl5");
         }
     }
 }
