@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae0a1b593964204094284d1e9aa95e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PausaWin: {fileID: 1594299024441516999, guid: f5eb257c7168c7341b59dd3ba17a3cea,
-    type: 3}
+  Tomas: {fileID: 2052168936960489804, guid: 1e20c17495be0274ab55449a697b6be9, type: 3}
+  mainClip: {fileID: 8300000, guid: c21e849590329c94f992bf888a8f78c7, type: 3}
+  fearClip: {fileID: 8300000, guid: 2e59d6d8180a7374688b0855fe877087, type: 3}
+  fightClip: {fileID: 8300000, guid: 1b64b1eda7f46e342a39d021aa9afe3c, type: 3}
 --- !u!81 &922282139484777340
 AudioListener:
   m_ObjectHideFlags: 0

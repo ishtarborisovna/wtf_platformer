@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -8,7 +7,8 @@ public class GameManagerScript : MonoBehaviour
     public static int points = 0;
     public static string lvl = "Lvl1";
 
-    
+    AudioSource mainAudio;
+    private GameObject[] tomas;
 
     void Awake()
     {
@@ -21,9 +21,16 @@ public class GameManagerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
+        mainAudio = GetComponent<AudioSource>();
     }
 
-    
+    private void Update()
+    {
+        tomas = GameObject.FindGameObjectsWithTag("Tom");
+        if (tomas.Length == 1 && !mainAudio.mute) mainAudio.mute = true;
+    }
+
+
 
 }
