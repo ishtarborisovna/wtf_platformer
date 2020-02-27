@@ -9,8 +9,8 @@ public class Zastavka : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.GetString("SaveLvl");
-        PlayerPrefs.GetInt("SavePoints");
+        GameManagerScript.lvl = PlayerPrefs.GetString("SaveLvl");
+        GameManagerScript.points = PlayerPrefs.GetInt("SavePoints");
 
     }
     void Update()
