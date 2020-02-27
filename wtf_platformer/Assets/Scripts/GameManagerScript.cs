@@ -7,10 +7,8 @@ public class GameManagerScript : MonoBehaviour
     public static GameManagerScript instance;
     public static int points = 0;
     public static string lvl = "Lvl1";
-    //public static int isComp = 0;
-    //public GameObject MobilMove;
-    //public GameObject PlatformWindow;
-    //public GameObject Zastavka;
+
+    private bool paused = false;
 
     void Awake()
     {
@@ -26,21 +24,26 @@ public class GameManagerScript : MonoBehaviour
         
     }
 
-    //private void Update()
-    //{
-    //    if (isComp == 1 && MobilMove.activeInHierarchy) MobilMove.SetActive(false);
-    //    else if (isComp == 2 && !MobilMove.activeInHierarchy) MobilMove.SetActive(true);
+    private void Update()
+    {
+        Pausa();
+    }
 
-    //    if (isComp > 0 && PlatformWindow.activeInHierarchy)
-    //    {
-    //        Zastavka.SetActive(true);
-    //        PlatformWindow.SetActive(false);
-    //    }
-    //}
+    private void Pausa()
+    {
+        if (Input.GetKeyDown("p"))
+        {
+            if (!paused)
+            {
+                Time.timeScale = 0;
+                paused = true;
+            }
+            else if (paused)
+            {
+                Time.timeScale = 1;
+                paused = false;
+            }
+        }
+    }
 
-    //public void Platform(int comp)
-    //{
-    //    isComp = comp;
-    //    Debug.Log(isComp);
-    //}
 }
