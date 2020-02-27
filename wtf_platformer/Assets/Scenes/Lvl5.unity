@@ -20671,7 +20671,7 @@ PrefabInstance:
     - target: {fileID: 8823201930422069885, guid: f0d3e7040674c1f498099359691d85b3,
         type: 3}
       propertyPath: dialog.sentences.Array.data[1]
-      value: "\u041F\u0440\u0438\u0447\u0438\u043D\u0430 \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u0439
+      value: "\u041F\u0440\u0438\u0447\u0438\u043D\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u0439
         \u044F \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u044E\u0441\u044C
         \u0441\u043D\u043E\u0432\u0430 \u0438 \u0441\u043D\u043E\u0432\u0430..."
       objectReference: {fileID: 0}
@@ -21114,7 +21114,7 @@ PrefabInstance:
     - target: {fileID: 6989536341152068225, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6989536341152068225, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6,
         type: 3}
@@ -21171,6 +21171,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 654
       objectReference: {fileID: 0}
+    - target: {fileID: 4498363439100384816, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1401385438101468073, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6,
         type: 3}
       propertyPath: m_Text
@@ -21180,7 +21185,12 @@ PrefabInstance:
     - target: {fileID: 1401385438101468073, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6,
         type: 3}
       propertyPath: m_FontData.m_LineSpacing
-      value: 0.9
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401385438101468073, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6,
+        type: 3}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b1e8d73793dcd4ebc1b72ec287d6e6, type: 3}

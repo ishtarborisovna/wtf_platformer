@@ -8,6 +8,10 @@ public class HarryControl : Unit
     [SerializeField]
     public float speed = 20f;
     [SerializeField]
+    public float mass = 5f;
+    [SerializeField]
+    public float speedFly = 7f;
+    [SerializeField]
     public float fallspeed = 3f;
     private Rigidbody2D rb;
     [SerializeField]
@@ -62,6 +66,12 @@ public class HarryControl : Unit
 
     public GameObject Lumos;
 
+    [SerializeField]
+    public bool isFly = false;
+    private float rate = 0f;
+    //public GameObject End;
+    public static bool isDie = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -80,23 +90,45 @@ public class HarryControl : Unit
 
     private void FixedUpdate()
     {
-        if (!Zastav.activeInHierarchy) Run();
-
+        if (!Zastav.activeInHierarchy && !isFly) Run();
+        if (isFly) Fly();
     }
 
     private void Update()
     {
         CheckGround();
         if (isGrounded) State = CharState.harry_idel;
-        if ((Input.GetButton("Horizontal") || directionInput != 0) && isGrounded &&!Zastav.activeInHierarchy) State = CharState.harry_run;
-        if (Input.GetButton("Horizontal")) isWalk = 1;
+        if ((Input.GetButton("Horizontal") || directionInput != 0) && isGrounded &&!Zastav.activeInHierarchy && !isFly) State = CharState.harry_run;
+        if (Input.GetButton("Horizontal") && !isFly) isWalk = 1;
         else isWalk = 0;
 
-        if (Input.GetButtonDown("Fire1") && !MobilMove.activeInHierarchy) Shoot(true);
-        if (harryDie && Lives < 1) Die();
-        if (Input.GetButtonDown("Jump")) Jump(true);
+        if (Input.GetButtonDown("Fire1") && !MobilMove.activeInHierarchy && !isFly) Shoot(true);
+        if (harryDie && Lives < 1 && !isFly) Die();
+        if (Input.GetButtonDown("Jump") && !isFly) Jump(true);
+
+        rate -= Time.deltaTime;
+        if (Input.GetButtonDown("Fire1") && isFly) FlyShoot();
+        if (harryDie && Lives < 1 && isFly) isDie = true;
     }
 
+    private void Fly()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, Mathf.Lerp(0, Input.GetAxis("Vertical") * speed, 0.8f) - mass);
+    }
+
+    private void FlyShoot()
+    {
+        if (rate <= 0)
+        {
+            Vector3 position = transform.position;
+            if (horizontal == 1) position.x += 0.8f;
+            else position.x -= 0.8f;
+
+            Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
+            newBullet.Direction = newBullet.transform.right * horizontal;
+            rate = 0.5f;
+        }
+    }
 
     private void Run()
     {

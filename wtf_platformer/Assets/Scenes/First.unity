@@ -5231,11 +5231,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: "\u0425\u043E\u0434\u0438\u0442\u044C - A \u0438 D \u0438\u043B\u0438 \u0441\u0442\u0440\u0435\u043B\u043A\u0438\n\u041F\u0440\u044B\u0433\u0430\u0442\u044C
-    - \u041F\u0440\u043E\u0431\u0435\u043B, \u043E\u043D \u0436\u0435 Space\n\u0421\u0442\u0440\u0435\u043B\u044F\u0442\u044C
-    - \u041B\u0435\u0432\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0430 \u043C\u044B\u0448\u0438
-    \u0438\u043B\u0438 \u043B\u0435\u0432\u044B\u0439 Contrl\n\u041F\u0430\u0443\u0437\u0430
-    - \u043A\u043B\u0430\u0432\u0438\u0448\u0430 P"
+  m_Text: "\u0425\u043E\u0434\u0438\u0442\u044C \u2014 A, D \u0438\u043B\u0438 \u0441\u0442\u0440\u0435\u043B\u043A\u0438.\n\u041F\u0440\u044B\u0433\u0430\u0442\u044C
+    \u2014 \u043F\u0440\u043E\u0431\u0435\u043B.\n\u0421\u0442\u0440\u0435\u043B\u044F\u0442\u044C
+    \u2014 \u043B\u0435\u0432\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0430 \u043C\u044B\u0448\u0438
+    \u0438\u043B\u0438 \u043B\u0435\u0432\u044B\u0439 Ctrl.\n\u041F\u0430\u0443\u0437\u0430
+    \u2014 P."
 --- !u!222 &467994113
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5394,8 +5394,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0416\u043C\u0438 \u0432\u044B\u0441\u0442\u0440\u0435\u043B, \u0438 \u0443\u0434\u0430\u0447\u0438
-    \u0442\u0435\u0431\u0435!.."
+  m_Text: "\u0416\u043C\u0438 \u0441\u0442\u0440\u0435\u043B\u044F\u0442\u044C, \u0438
+    \u0443\u0434\u0430\u0447\u0438 \u0442\u0435\u0431\u0435!.."
 --- !u!222 &1117363316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5439,7 +5439,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1270.8, y: 532.8}
+  m_SizeDelta: {x: 1280, y: 432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202162185
 MonoBehaviour:
