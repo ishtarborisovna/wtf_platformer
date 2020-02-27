@@ -8,7 +8,7 @@ public class GameManagerScript : MonoBehaviour
     public static int points = 0;
     public static string lvl = "Lvl1";
 
-    private bool paused = false;
+    
 
     void Awake()
     {
@@ -24,26 +24,6 @@ public class GameManagerScript : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        Pausa();
-    }
-
-    private void Pausa()
-    {
-        if (Input.GetKeyDown("p"))
-        {
-            if (!paused)
-            {
-                Time.timeScale = 0;
-                paused = true;
-            }
-            else if (paused)
-            {
-                Time.timeScale = 1;
-                paused = false;
-            }
-        }
-    }
+    
 
 }
